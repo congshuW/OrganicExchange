@@ -1,12 +1,29 @@
 import React, { useState, useEffect } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
 import getWeb3 from "./getWeb3";
 import LogsContract from "./contracts/Log.json";
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    padding: theme.spacing(2),
+    margin: 'auto',
+    maxWidth: 500,
+  },
+  container: {
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
+    textAlign: 'center',
+  },
+}));
 
 const Logs = (props) => {
 	const [ produceName, setProduceName ] = useState(null);
 	const [ logs, setLogs ] = useState(null);
 	const [ logList, setLogList ] = useState([]);
+	const classes = useStyles();
 
 	useEffect(() => {
 		const { produceName, logs } = props.location.state;
@@ -43,11 +60,11 @@ const Logs = (props) => {
 	const displayLogs = () => {
 		return logList.map((log) => {
 			return (
-				<div key={log.description + log.dt}>
+				<Paper elevation={5} key={log.dt}>
 				  <p>{log.description}</p>
 				  <img src={log.imageUrl} width='200px' height='200px' />
 				  <p>{log.dt}</p>
-				</div>
+				</Paper>
 			)
 		});
 	};
@@ -58,9 +75,9 @@ const Logs = (props) => {
 	      <h3>Here shows how {produceName} is grown</h3>
 	    </div>
 
-	    <div className="log-info">
+	    <Container maxWidth="sm">
 	      {displayLogs()}
-	    </div>
+	    </Container>
 	  </div>
 	)
 };

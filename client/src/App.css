@@ -47,8 +47,12 @@ body {
   margin-left: 3px;
 }
 
-.main-container {
-  margin: 20px;
+.home-container {
+  margin: 2rem;
+}
+
+.home-title {
+  text-align: center;
 }
 
 .produce-card-container {
@@ -76,10 +80,6 @@ body {
 
 .receipt-header {
   border-bottom: 1px solid gray;
-}
-
-.receipt-container {
-  text-align: center;
 }
 
 .receipt-info {

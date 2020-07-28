@@ -2,31 +2,27 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import getWeb3 from "./getWeb3";
 import ProduceFactoryContract from "./contracts/ProduceFactory.json";
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
-  menu: {
-    width: 200,
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-  input: {
-    display: 'none',
-  },
+	root: {
+	  flexGrow: 1,
+	},
+	paper: {
+	  padding: theme.spacing(2),
+	  margin: 'auto',
+	  maxWidth: 500,
+	},
+	h2: {
+		textAlign: 'center',
+	},
+	  button: {
+	    margin: theme.spacing(2),
+	  }
 }));
 
 const NewProduce = () => {
@@ -89,86 +85,101 @@ const NewProduce = () => {
 	};
 
 	return (
-	    <div>
-		    <h2>Create a New Produce</h2>
+	    <div className={classes.root}>
+		    <h2 className={classes.h2}>Create a New Produce</h2>
+		    <Paper className={classes.paper} elevation={5}>
+			    <Grid container spacing={3} align="center" alignItems="center" justify="center">
+			    	<Grid item xs={12}>
+					    <label>Produce Name</label>
+					    <TextField
+					      id="outlined-bare"
+					      type = "text"
+					      className={classes.textField}
+					      placeholder="Produce Name"
+					      margin="normal"
+					      onChange={(e) => setProduceName(e.target.value)}
+					      variant="outlined"
+					      inputProps={{ 'aria-label': 'bare' }}
+					    />
+					</Grid>
 
-		    <label>Produce Name</label>
-		    <TextField
-		      id="outlined-bare"
-		      type = "text"
-		      className={classes.textField}
-		      placeholder="Produce Name"
-		      margin="normal"
-		      onChange={(e) => setProduceName(e.target.value)}
-		      variant="outlined"
-		      inputProps={{ 'aria-label': 'bare' }}
-		    />
+					<Grid item xs={12}>
+					    <label>Produce Description</label>
+					    <TextField
+					      id="outlined-bare"
+					      type = "text"
+					      className={classes.textField}
+					      placeholder="Produce Description"
+					      margin="normal"
+					      onChange={(e) => setProduceDescription(e.target.value)}
+					      variant="outlined"
+					      inputProps={{ 'aria-label': 'bare' }}
+					    />
+					</Grid>
 
-		    <label>Produce Description</label>
-		    <TextField
-		      id="outlined-bare"
-		      type = "text"
-		      className={classes.textField}
-		      placeholder="Produce Description"
-		      margin="normal"
-		      onChange={(e) => setProduceDescription(e.target.value)}
-		      variant="outlined"
-		      inputProps={{ 'aria-label': 'bare' }}
-		    />
+					<Grid item xs={12}>
+					    <label>Produce Price</label>
+					    <TextField
+					      id="outlined-bare"
+					      type = "number"
+					      className={classes.textField}
+					      placeholder="Produce Price"
+					      margin="normal"
+					      onChange={(e) => setProducePrice(e.target.value)}
+					      variant="outlined"
+					      inputProps={{ 'aria-label': 'bare' }}
+					    />
+					</Grid>
 
-		    <label>Produce Price</label>
-		    <TextField
-		      id="outlined-bare"
-		      type = "number"
-		      className={classes.textField}
-		      placeholder="Produce Price"
-		      margin="normal"
-		      onChange={(e) => setProducePrice(e.target.value)}
-		      variant="outlined"
-		      inputProps={{ 'aria-label': 'bare' }}
-		    />
+					<Grid item xs={12}>
+					    <label>Website</label>
+					    <TextField
+					      id="outlined-bare"
+					      type = "url"
+					      className={classes.textField}
+					      placeholder="Website"
+					      margin="normal"
+					      onChange={(e) => setUrl(e.target.value)}
+					      variant="outlined"
+					      inputProps={{ 'aria-label': 'bare' }}
+					    />
+					</Grid>
 
-		    <label>Website</label>
-		    <TextField
-		      id="outlined-bare"
-		      type = "url"
-		      className={classes.textField}
-		      placeholder="Website"
-		      margin="normal"
-		      onChange={(e) => setUrl(e.target.value)}
-		      variant="outlined"
-		      inputProps={{ 'aria-label': 'bare' }}
-		    />
+					<Grid item xs={12}>
+					    <label>Image</label>
+					    <TextField
+					      id="outlined-bare"
+					      type = "url"
+					      className={classes.textField}
+					      placeholder="Produce Image"
+					      margin="normal"
+					      onChange={(e) => setImageURL(e.target.value)}
+					      variant="outlined"
+					      inputProps={{ 'aria-label': 'bare' }}
+					    />
+					</Grid>
 
-		    <label>Image</label>
-		    <TextField
-		      id="outlined-bare"
-		      type = "url"
-		      className={classes.textField}
-		      placeholder="Produce Image"
-		      margin="normal"
-		      onChange={(e) => setImageURL(e.target.value)}
-		      variant="outlined"
-		      inputProps={{ 'aria-label': 'bare' }}
-		    />
+					<Grid item xs={12}>
+					    <label>Address</label>
+					    <TextField
+					      id="outlined-bare"
+					      className={classes.textField}
+					      placeholder="Produce Ethereum Address"
+					      margin="normal"
+					      onChange={(e) => setAddress(e.target.value)}
+					      variant="outlined"
+					      inputProps={{ 'aria-label': 'bare' }}
+					    />
+					</Grid>
 
-		    <label>Address</label>
-		    <TextField
-		      id="outlined-bare"
-		      className={classes.textField}
-		      placeholder="Produce Ethereum Address"
-		      margin="normal"
-		      onChange={(e) => setAddress(e.target.value)}
-		      variant="outlined"
-		      inputProps={{ 'aria-label': 'bare' }}
-		    />
-
-		    <Button
-		      onClick={handleSubmit}
-		      variant="contained"
-		      className={classes.button}>
-		      Submit
-		    </Button>
+				    <Button
+				      onClick={handleSubmit}
+				      variant="contained"
+				      className={classes.button}>
+				      Submit
+				    </Button>
+				</Grid>
+			</Paper>
 	    </div>
 	)
 };

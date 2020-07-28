@@ -59,8 +59,8 @@ const Home = () => {
 	};
 
 	return (
-	  <div className="main-container">
-	  	<h2>Home</h2>
+	  <div className="home-container">
+	  	<h2 className="home-title">Available Produce Nearby</h2>
 	  	{displayProduces()}
 	  </div>
 	);

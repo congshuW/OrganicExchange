@@ -27,6 +27,10 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
+import Container from '@material-ui/core/Container';
+
+import Divider from '@material-ui/core/Divider';
+
 import ProduceContract from "./contracts/Produce.json";
 
 import { Link } from 'react-router-dom';
@@ -48,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     maxWidth: 450,
-    height: 400
+    
   },
   media: {
     height: 140,
@@ -71,6 +75,17 @@ const useStyles = makeStyles(theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
+  container: {
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
+  },
+  img: {
+    display: 'block',
+    margin: 'auto',
+  },
+  divider: {
+    margin: '1rem 0', 
+  }
 }));
 
 const ProduceCard = (props) => {
@@ -268,11 +283,11 @@ const ProduceCard = (props) => {
   return (
     <div className="produce-card-content">
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">purchase {produceName}</DialogTitle>
+        <DialogTitle id="form-dialog-title">Purchase {produceName}</DialogTitle>
           <DialogContent>
             <DialogContentText component="div">
-              <img src={imageURL} width='200px' height='200px' />
-              <p>{producePrice}</p>
+              <img className={classes.img} src={imageURL} width='200px' height='200px' />
+              <p>${producePrice}</p>
               <p>{produceDescription}</p>
               <p>{url}</p>
               <Button variant="contained" color="primary">
@@ -321,7 +336,7 @@ const ProduceCard = (props) => {
             </Button>
           </DialogActions>
           <Collapse in={isOwnerExpanded} timeout="auto" unmountOnExit>
-              <div>
+              <Container maxWidth="sm" className={classes.container}>
                 <h2>Tell others how the produce is grown</h2>
 
                 <label>Verbal Description</label>
@@ -352,9 +367,9 @@ const ProduceCard = (props) => {
                     onClick={addOneLog}>
                   Add Log
                 </Button>
-              </div>
+              
+                <Divider className={classes.divider}/>
 
-              <div>
                 <FormControl className={classes.formControl}>
                   Beneficiary:
                   <Input
@@ -368,11 +383,15 @@ const ProduceCard = (props) => {
                     onClick={setBeneficiary}>
                   Set Beneficiary
                 </Button>
-              </div>
+                
 
-              <Button variant="contained" color="primary" onClick={withdrawIncomes}>
-                Withdraw
-              </Button>
+                <Divider className={classes.divider}/>
+
+                
+                <Button variant="contained" color="primary" onClick={withdrawIncomes}>
+                  Withdraw
+                </Button>
+              </Container>
           </Collapse>
       </Dialog>
       <Card className={classes.card} onClick={handleOpen}>
@@ -388,14 +407,6 @@ const ProduceCard = (props) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button
-            onClick={handleOpen}
-            variant="contained"
-            className={classes.button}>
-            View More
-          </Button>
-        </CardActions>
       </Card>
     </div>
   )
