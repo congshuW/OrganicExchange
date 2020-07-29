@@ -4,6 +4,7 @@ import getWeb3 from "./getWeb3";
 import ProduceFactoryContract from "./contracts/ProduceFactory.json";
 import ProduceCard from './ProduceCard';
 import Web3 from 'web3';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -61,7 +62,9 @@ const Home = () => {
 	return (
 	  <div className="home-container">
 	  	<h2 className="home-title">Available Produce Nearby</h2>
-	  	{displayProduces()}
+	  	<Grid container spacing={2} direction="row" justify="flex-start" alignItems="flex-start">
+	  		{displayProduces()}
+	  	</Grid>
 	  </div>
 	);
 };

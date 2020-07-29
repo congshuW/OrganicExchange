@@ -31,6 +31,8 @@ import Container from '@material-ui/core/Container';
 
 import Divider from '@material-ui/core/Divider';
 
+import Grid from '@material-ui/core/Grid';
+
 import ProduceContract from "./contracts/Produce.json";
 
 import { Link } from 'react-router-dom';
@@ -85,7 +87,7 @@ const useStyles = makeStyles(theme => ({
   },
   divider: {
     margin: '1rem 0', 
-  }
+  },
 }));
 
 const ProduceCard = (props) => {
@@ -281,7 +283,7 @@ const ProduceCard = (props) => {
   };
 
   return (
-    <div className="produce-card-content">
+    <Grid item xs={12} sm={6} md={3} key={produceName}>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Purchase {produceName}</DialogTitle>
           <DialogContent>
@@ -408,7 +410,7 @@ const ProduceCard = (props) => {
           </CardContent>
         </CardActionArea>
       </Card>
-    </div>
+    </Grid>
   )
 }
 
