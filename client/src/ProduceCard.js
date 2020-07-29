@@ -242,7 +242,7 @@ const ProduceCard = (props) => {
   };
 
   const addOneLog = async () => {
-    contract.methods.addLog(logDescription, logImageURL).send({from: accounts[0], gas: 650000}).then(function(receipt){
+    contract.methods.addLog(logDescription, logImageURL).send({from: accounts[0], gas: 750000}).then(function(receipt){
       console.log(receipt);
     });;
     alert(`Log is added.`)
